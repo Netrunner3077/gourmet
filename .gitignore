@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Виртуальное окружение
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Локальные настройки
+.env
+
+# MongoDB локальные данные (если когда-нибудь положишь рядом)
+data/db/
+
+.pytest_cache/
+.coverage
+htmlcov/

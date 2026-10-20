@@ -1,0 +1,9 @@
+PyQt5==5.15.11
+pymongo==4.16.0
+bcrypt==5.0.0
+Pillow==12.3.0
+matplotlib>=3.11.2
+requests==2.34.0
+beautifulsoup4==4.14.3
+python-dotenv==1.2.2
+numpy>=2.5.4

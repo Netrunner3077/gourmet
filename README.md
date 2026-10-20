@@ -1,0 +1,191 @@
+# Гурман (Gourmet)
+
+**Гурман** — это десктопное приложение для оценки продуктов питания, ведения независимых отзывов и выбора качественных товаров. Приложение помогает узнать состав продукта, прочитать реальные отзывы пользователей, отследить динамику цен и получить автоматический анализ на наличие вредных добавок и аллергенов.
+
+## Основные возможности
+
+- **Каталог продуктов**: Поиск, фильтрация по категориям, удобные карточки товаров.
+- **Система рейтинга и отзывов**: Оценка по 5-звездочной шкале, лайки, дизлайки и комментарии к отзывам.
+- **Анализ состава**: Автоматическое определение вредных пищевых добавок (E-номера) и аллергенов на основе встроенного справочника.
+- **История цен**: Наглядный график изменения цен (с поддержкой выбора периода от 7 дней до всего времени).
+- **Избранное и Корзина**: Сохранение понравившихся товаров и формирование списка покупок.
+- **Сравнение**: Side-by-side сравнение до 4 товаров по ключевым характеристикам.
+- **Личный кабинет**: Смена аватара, статистика активности, смена пароля.
+- **Админ-панель**: Управление товарами, категориями, пользователями и модерация отзывов.
+- **Интеграция с OpenFoodFacts**: Возможность импорта товаров по названию или штрихкоду прямо из открытой базы данных.
+
+## Технологический стек
+
+- **Язык**: Python 3.9+ (тестировалось на 3.15)
+- **UI-фреймворк**: PyQt5
+- **База данных**: MongoDB (NoSQL, документоориентированная)
+- **Драйвер БД**: PyMongo
+- **Безопасность**: Bcrypt (хеширование паролей)
+- **Графики**: Matplotlib
+- **Обработка изображений**: Pillow
+- **Парсинг**: Requests, BeautifulSoup4
+- **Тестирование**: Pytest (115 автотестов)
+
+## Архитектура проекта
+
+Проект построен по паттерну, близкому к **MVC (Model-View-Controller)**:
+
+    ```text
+    gourmet/
+    ├── __pycache__
+    ├── .pytest_cache
+    ├── config.py
+    ├── .venv
+    ├── .vscode
+    │
+    ├── controllers/                # Бизнес-логика (связующее звено)
+    │   ├── __pycache__
+    │   ├── __init__.py
+    │   ├── admin_controller.py
+    │   ├── auth_controller.py
+    │   ├── cart_controller.py
+    │   ├── compare_controller.py
+    │   ├── import_controller.py
+    │   ├── price_controller.py
+    │   ├── product_controller.py
+    │   ├── profile_controller.py
+    │   └── review_controller.py
+    │
+    ├── models/                     # Работа с MongoDB (CRUD-операции)
+    │   ├── __pycache__
+    │   ├── __init__.py
+    │   ├── cart_model.py
+    │   ├── category_model.py
+    │   ├── database.py
+    │   ├── favorite_model.py
+    │   ├── price_history_model.py
+    │   ├── product_model.py
+    │   ├── review_model.py
+    │   └── user_model.py
+    │
+    ├── resources/                  # Статические файлы (стили QSS, иконки, JSON-справочники)
+    │   ├── data/
+    │   │   ├── additives.json
+    │   │   └── allergens.json
+    │   ├── images/
+    │   │   ├── avatars/
+    │   │   └── products/
+    │   │       ├── bitter.jpg
+    │   │       ├── cheese.jpg
+    │   │       ├── chicken.jpg
+    │   │       ├── cottage_cheese.jpg
+    │   │       ├── good_kola.jpg
+    │   │       ├── kvas.jpg
+    │   │       ├── milk.jpg
+    │   │       ├── sausage.jpg
+    │   │       └── schnitzel.jpg
+    │   └── styles/
+    │       └── style.qss
+    │
+    ├── tests/                      # Модульные и интеграционные тесты
+    │   ├── __pycache__
+    │   ├── __init__.py
+    │   ├── conftest.py
+    │   ├── test_auth_controller.py
+    │   ├── test_cart_model.py
+    │   ├── test_category_model.py
+    │   ├── test_composition_analyzer.py
+    │   ├── test_favorite_model.py
+    │   ├── test_product_model.py
+    │   ├── test_review_model.py
+    │   ├── test_security.py
+    │   ├── test_user_model.py
+    │   └── test_validators.py
+    │
+    ├── utils/                      # Вспомогательные утилиты (безопасность, парсинг, анализ)
+    │   ├── __pycache__
+    │   ├── __init__.py
+    │   ├── composition_analyzer.py
+    │   ├── image_utils.py
+    │   ├── openfoodfacts_parser.py
+    │   ├── security.py
+    │   ├── session.py
+    │   ├── time_utils.py
+    │   ├── ui_helpers.py
+    │   └── validators.py
+    │
+    ├── views/                      # Интерфейс на PyQt5
+    │    ├── __pycache__
+    │    ├── __init__.py
+    │    ├── widgets/               # Кастомные виджеты (звезды рейтинга и т.д.)
+    │    │   ├── __init__.py
+    │    │   └── star_rating.py
+    │    ├── admin_window.py
+    │    ├── cart_window.py
+    │    ├── compare_window.py
+    │    ├── login_window.py
+    │    ├── main_window.py
+    │    ├── price_chart.py
+    │    ├── product_card.py
+    │    ├── product_window.py
+    │    ├── profile_window.py
+    │    ├── register_window.py
+    │    └── review_widget.py
+    │
+    ├── .env
+    ├── .gitignore
+    ├── config.py                   # Конфигурация и пути
+    ├── main.py                     # Точка входа в приложение
+    ├── seed.py                     # Скрипт первичного наполнения БД
+    ├── requirements.txt
+    └── requirements-dev.txt
+    ```
+
+## Установка и запуск
+
+1. Требования:
+   - Установленный Python 3.9+
+   - Установленный и запущенный сервер MongoDB (по умолчанию mongodb://localhost:27017/)
+2. Клонирование и настройка окружения:
+
+```bash
+git clone <ссылка_на_репозиторий>
+cd gourmet
+python -m venv .venv
+
+# Windows:
+.venv\Scripts\activate
+
+# Linux/Mac:
+source .venv/bin/activate
+```
+
+3. Установка зависимостей:
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Наполнение базы данных (опционально):
+
+```bash
+python seed.py  # Скрипт создаст базовые категории и заполнит каталог тестовыми товарами с историей цен.
+```
+
+5. Запуск приложения:
+
+```bash
+python main.py
+```
+
+6. Тестирование:
+
+```bash
+
+# Для запуска всех тестов (потребуется установить requirements-dev.txt):
+
+pip install -r requirements-dev.txt
+
+pytest
+
+# (Все 115 тестов должны пройти успешно).
+```
+
+## Лицензия
+
+Проект создан в образовательных целях. Вы можете свободно использовать, модифицировать и распространять код.

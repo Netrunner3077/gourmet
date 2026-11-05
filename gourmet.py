@@ -208,7 +208,7 @@ class Main_Milk_Food_Window(QWidget):
         
         self.label1 = QLabel(self)
         self.label1.setGeometry(50, 50, 200, 200)
-        image_Milk = QPixmap("Milk.jpg")
+        image_Milk = QPixmap("milk.jpg")
         self.label1.setPixmap(image_Milk)
         self.label1.setCursor(Qt.PointingHandCursor)
         self.label1.setObjectName("milk")
@@ -216,7 +216,7 @@ class Main_Milk_Food_Window(QWidget):
 
         self.label2 = QLabel(self)
         self.label2.setGeometry(300, 50, 200, 200)
-        image_Cheese = QPixmap("Cheese.jpg")
+        image_Cheese = QPixmap("cheese.jpg")
         self.label2.setPixmap(image_Cheese)
         self.label2.setCursor(Qt.PointingHandCursor)
         self.label2.setObjectName("cheese")
@@ -224,7 +224,7 @@ class Main_Milk_Food_Window(QWidget):
 
         self.label3 = QLabel(self)
         self.label3.setGeometry(550, 50, 200, 200)
-        image_Cottage_cheese = QPixmap("Cottage cheese.jpg")
+        image_Cottage_cheese = QPixmap("cottage_cheese.jpg")
         self.label3.setPixmap(image_Cottage_cheese)
         self.label3.setCursor(Qt.PointingHandCursor)
         self.label3.setObjectName("cottage_cheese")
@@ -574,7 +574,7 @@ class Main_Meet_Food_Window(QWidget):
         
         self.label4 = QLabel(self)
         self.label4.setGeometry(50, 50, 200, 200)
-        image_Sausage = QPixmap("Sausage.jpg")
+        image_Sausage = QPixmap("sausage.jpg")
         self.label4.setPixmap(image_Sausage)
         self.label4.setCursor(Qt.PointingHandCursor)
         self.label4.setObjectName("sausage")
@@ -582,7 +582,7 @@ class Main_Meet_Food_Window(QWidget):
 
         self.label5 = QLabel(self)
         self.label5.setGeometry(300, 50, 200, 200)
-        image_Schnitzel = QPixmap("Schnitzel.jpg")
+        image_Schnitzel = QPixmap("schnitzel.jpg")
         self.label5.setPixmap(image_Schnitzel)
         self.label5.setCursor(Qt.PointingHandCursor)
         self.label5.setObjectName("schnitzel")
@@ -590,7 +590,7 @@ class Main_Meet_Food_Window(QWidget):
 
         self.label6 = QLabel(self)
         self.label6.setGeometry(550, 50, 200, 200)
-        image_Chicken = QPixmap("Chicken.jpg")
+        image_Chicken = QPixmap("chicken.jpg")
         self.label6.setPixmap(image_Chicken)
         self.label6.setCursor(Qt.PointingHandCursor)
         self.label6.setObjectName("chicken")
@@ -940,7 +940,7 @@ class Main_Drinks_Window(QWidget):
         
         self.label7 = QLabel(self)
         self.label7.setGeometry(50, 50, 200, 200)
-        image_Good_kola = QPixmap("Good_kola.jpg")
+        image_Good_kola = QPixmap("good_kola.jpg")
         self.label7.setPixmap(image_Good_kola)
         self.label7.setCursor(Qt.PointingHandCursor)
         self.label7.setObjectName("good_kola")
@@ -948,7 +948,7 @@ class Main_Drinks_Window(QWidget):
 
         self.label8 = QLabel(self)
         self.label8.setGeometry(300, 50, 200, 200)
-        image_Bitter = QPixmap("Bitter.jpg")
+        image_Bitter = QPixmap("bitter.jpg")
         self.label8.setPixmap(image_Bitter)
         self.label8.setCursor(Qt.PointingHandCursor)
         self.label8.setObjectName("bitter")
@@ -956,7 +956,7 @@ class Main_Drinks_Window(QWidget):
 
         self.label9 = QLabel(self)
         self.label9.setGeometry(550, 50, 200, 200)
-        image_Kvas = QPixmap("Kvas.jpg")
+        image_Kvas = QPixmap("kvas.jpg")
         self.label9.setPixmap(image_Kvas)
         self.label9.setCursor(Qt.PointingHandCursor)
         self.label9.setObjectName("kvas")

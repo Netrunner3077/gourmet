@@ -1,0 +1,19 @@
+services:
+  gourmet-prototype:
+    build: .
+    container_name: gourmet-prototype
+    environment:
+      # Переменная нужна для проброса GUI на Windows-хост
+      - DISPLAY=host.docker.internal:0.0
+      # Отключаем использование Shared Memory, из-за которого часто падают Qt-приложения в Docker
+      - QT_X11_NO_MITSHM=1
+      - QT_DEBUG_PLUGINS=1 # Включаем отладку плагинов, чтобы видеть детали ошибки
+    volumes:
+      # Монтируем текущую папку в контейнер.
+      # Это нужно, чтобы изменения в gourmet.py или base.db сразу применялись.
+      - .:/app
+    # Для GUI-приложений network_mode: host иногда решает проблемы с X11, но на Windows лучше оставить дефолтную сеть и использовать host.docker.internal
+    # Добавляем права, чтобы контейнер мог обращаться к X-серверу
+    security_opt:
+      - seccomp:unconfined
+    network_mode: host # В некоторых случаях это решает проблемы с DISPLAY на Windows
